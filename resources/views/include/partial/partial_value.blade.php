@@ -8,6 +8,7 @@
             <li>{{ $product['product_name'] }}</li>
             <li>{{ $product['product_color'] }}</li>
             <li>{{ $product['product_price'] }}</li>
+            
 
         </div>
 

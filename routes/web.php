@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\singleController;
+use App\Http\Controllers\post;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,70 +17,73 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home',[
-        'cate_name' => 'home page',
-        'text' => 'ALLAH IS ONE'
-    ]);
+Route::get('/', [FrontController::class, 'home'])->name('home');
 
-});
-
-Route::get('/service-page', function () {
+Route::get('/service-page',[FrontController::class, 'service']
 
 
-        $services = [
+    //     $services = [
 
-            'web development',
-            'graphics development',
-            'app development',
-            'gui development'
+    //         'web development',
+    //         'graphics development',
+    //         'app development',
+    //         'gui development'
 
-        ];
+    //     ];
 
-    return view('service', compact('services'));
-})->name('service');
+    // return view('service', compact('services'));
+)->name('service');
 
 Route::get('/about-page', function () {
+
     return view('about');
 })->name('about');
 
-Route::get('/contact-page', function () {
+Route::get('/contact-page', singleController::class
 
-    $page_name = "contact page";
-    $products = [
+    // $page_name = "contact page";
+    // $products = [
 
-        1 => [
+    //     1 => [
 
-            'product_name' => 'laptop',
-            'product_color' => 'white',
-            'product_price' => 12000
+    //         'product_name' => 'laptop',
+    //         'product_color' => 'white',
+    //         'product_price' => 12000
 
-        ],
+    //     ],
 
-        2 => [
+    //     2 => [
 
-            'product_name' => 'apple phone',
-            'product_color' => 'black',
-            'product_price' => 50000
+    //         'product_name' => 'apple phone',
+    //         'product_color' => 'black',
+    //         'product_price' => 50000
 
-        ],
+    //     ],
 
-        3 => [
+    //     3 => [
 
-            'product_name' => 'car',
-            'product_color' => 'black',
-            'product_price' => 200000
+    //         'product_name' => 'car',
+    //         'product_color' => 'black',
+    //         'product_price' => 200000
 
-        ]
+    //     ]
 
 
-    ];
+    // ];
 
-    $product_count = count($products);
+    // $product_count = count($products);
 
-    return view('contact', compact('product_count','products', 'page_name'));
+    // // return view('contact', compact('product_count','products', 'page_name'));
+    // return response()->json([
 
-})->name('contact');
+    //     'products' => $products,
+    //     'product-count' => $product_count
+
+    // ],200)
+    // ->header('content-type', 'application/json')
+    // ->cookie('id_card','ekramul hasan',3600);
+
+)->name('contact');
 
 
 // Route::get('/contact-page/{contact_id?}/{contact_person?}', function ($contact_id=null, $contact_person=null) {
@@ -102,3 +109,41 @@ Route::get('/category/{category_name}', function ($category_name) {
 
 })->whereIn('category_name', ['televison','computer', 'laptop', 'chicken']);
 
+
+
+Route::get('/content/download', function () {
+
+    return response()->download(public_path('/al-islam.pdf'), 'islamic book');
+
+})->name('donwload');
+
+
+
+Route::prefix('page')->name('laravel.')->group(function(){
+
+
+    Route::get('/home', function () {
+
+        return view('home');
+    })->name('home');
+
+
+    Route::get('/service', function () {
+
+        return view('service');
+    })->name('service');
+
+
+    Route::get('/about', function () {
+
+        return view('about');
+    })->name('about');
+
+
+
+
+
+});
+
+
+Route::resource('/posts', post::class);
