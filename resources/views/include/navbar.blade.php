@@ -20,6 +20,10 @@
             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('category.create') }}">Create-Category</a>
+          </li>
+
         </ul>
 
         <form class="d-flex">

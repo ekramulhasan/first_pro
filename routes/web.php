@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\singleController;
 use App\Http\Controllers\post;
+use App\Http\Controllers\user_Front_controller;
+use App\Http\Controllers\categoryController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +20,7 @@ use App\Http\Controllers\post;
 |
 */
 
-Route::get('/', [FrontController::class, 'home'])->name('home');
+Route::get('/', [user_Front_controller::class, 'user_info'])->name('home');
 
 Route::get('/service-page',[FrontController::class, 'service']
 
@@ -139,11 +142,10 @@ Route::prefix('page')->name('laravel.')->group(function(){
         return view('about');
     })->name('about');
 
-
-
-
-
 });
 
 
 Route::resource('/posts', post::class);
+Route::resource('/category', categoryController::class);
+Route::resource('/subcategory', SubcategoryController::class);
+
