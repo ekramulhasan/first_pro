@@ -12,6 +12,7 @@
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
+        <th scope="col">NID</th>
         <th scope="col">Join Date</th>
       </tr>
     </thead>
@@ -24,6 +25,7 @@
             <td>{{ $user_info ->name}}</td>
             <td>{{ $user_info ->email}}</td>
             <td>{{ $user_info ->phone_number}}</td>
+            <td>{{ $user_info ->nidcard->NIDnumber ?? ''}}</td>
             <td>{{ $user_info ->created_at}}</td>
         </tr>
 

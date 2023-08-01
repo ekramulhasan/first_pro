@@ -10,7 +10,7 @@ class user_Front_controller extends Controller
     public function user_info(){
 
     //    $users = User::all();
-       $users = User::latest()->get();
+       $users = User::latest()->with('nidcard')->get();
 
        return view('home',['user_data'=>$users]);
 

@@ -15,4 +15,9 @@ class category extends Model
         'slug',
         'is_active'
     ];
+
+    public function subcategory(){
+
+        return $this->hasMany(subcategory::class);
+    }
 }

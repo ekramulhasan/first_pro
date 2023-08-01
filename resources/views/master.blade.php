@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @include('include.style')
+
     <title>@yield('title')</title>
   </head>
   <body>
 
     @include('include.navbar')
-    @include('include.js-script')
+    {{-- @include('include.js-script') --}}
 
    <div class="container">
     @yield('content')
