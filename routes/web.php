@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\singleController;
-use App\Http\Controllers\post;
-use App\Http\Controllers\user_Front_controller;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\FileuploadController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\user_Front_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,4 +149,4 @@ Route::prefix('page')->name('laravel.')->group(function(){
 Route::resource('/posts', post::class);
 Route::resource('/category', categoryController::class);
 Route::resource('/subcategory', SubcategoryController::class);
-
+Route::resource('file', FileuploadController::class);

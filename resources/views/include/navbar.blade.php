@@ -34,6 +34,11 @@
             <a class="nav-link" href="{{ route('subcategory.create') }}">Subcategory-create</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('file.create') }}">FileUpload</a>
+          </li>
+
+
         </ul>
 
         <form class="d-flex">
