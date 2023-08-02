@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ProductStoreRequest;
 
 class FileuploadController extends Controller
 {
@@ -31,10 +33,23 @@ class FileuploadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
 
-        dd($request->all());
+        // dd($request->hasFile('productImage'));
+
+        // dd($request->all());
+
+        $file_exits = $request->hasFile('productImage');
+
+        if($file_exits){
+
+            $file = $request->file('productImage');
+
+            // dump($file->store('image'));
+            dump(Storage::disk('public')->put('image', $file));
+
+        }
     }
 
     /**
